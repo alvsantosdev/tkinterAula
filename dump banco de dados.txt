@@ -1,0 +1,53 @@
+Estrutura da tabela `alunos`
+--
+
+CREATE TABLE `alunos` (
+  `id` int(11) NOT NULL,
+  `nome_aluno` varchar(100) NOT NULL,
+  `data_nascimento` date DEFAULT NULL,
+  `genero` varchar(20) DEFAULT NULL,
+  `id_turma` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `alunos`
+--
+
+INSERT INTO `alunos` (`id`, `nome_aluno`, `data_nascimento`, `genero`, `id_turma`) VALUES
+(1, 'Maria Silva', '2015-03-20', 'Feminino', 1),
+(2, 'João Santos', '2008-07-12', 'Masculino', 2),
+(3, 'Ana Oliveira', '2016-01-05', 'Feminino', 1),
+(4, 'Pedro Costa', '2005-09-30', 'Masculino', 3),
+(5, 'dfASDA', '0000-00-00', 'feminino', NULL);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `alunos`
+--
+ALTER TABLE `alunos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_turma` (`id_turma`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `alunos`
+--
+ALTER TABLE `alunos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Limitadores para a tabela `alunos`
+--
+ALTER TABLE `alunos`
+  ADD CONSTRAINT `alunos_ibfk_1` FOREIGN KEY (`id_turma`) REFERENCES `turmas` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+COMMIT;
